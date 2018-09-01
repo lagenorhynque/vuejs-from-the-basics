@@ -7,19 +7,12 @@
   </head>
   <body>
     <div id="app">
-      <p>{{ message.value }}</p>
-      <p>{{ message.value.length }}</p>
-      <input type="text" :value="message.value">
-      <p>{{ list[2] }}</p>
-      <p>{{ list[num] }}</p>
-      <p>{{ count }} times clicked!</p>
-      <button v-on:click="increment">Increment count</button>
-      <p :class="classObject">Text</p>
-      <p :style="styleObject">Text</p>
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <circle cx="100" cy="75" :r="radius" fill="lightpink" />
-      </svg>
-      <input type="range" min="0" max="100" v-model="radius">
+      <div v-if="ok">v-if condition</div>
+      <div v-show="ok">v-show condition</div>
+      <template v-if="ok">
+        <header>title</header>
+        <div>contents</div>
+      </template>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
