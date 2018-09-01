@@ -7,11 +7,10 @@
   </head>
   <body>
     <div id="app">
-      {{ price | localeNum }}円
-
-      {{ message | filter('bar', 100) }}
-
-      180° is {{ 180 | radian | round }} radian
+      <button @click="list.push(list.length + 1)">Add</button>
+      <ul ref="list">
+        <li v-for="item in list">{{ item }}</li>
+      </ul>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>

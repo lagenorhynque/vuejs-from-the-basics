@@ -1,21 +1,14 @@
 const app = new Vue({
   el: '#app',
   data: {
-    price: 19800,
-    message: 'Hello Vue.js!'
+    list: []
   },
-  filters: {
-    localeNum(val) {
-      return val.toLocaleString();
-    },
-    filter(message, foo, num) {
-      console.log(message, foo, num);
-    },
-    round(val) {
-      return Math.round(val * 100) / 100;
-    },
-    radian(val) {
-      return val * Math.PI / 180;
+  watch: {
+    list() {
+      console.log('通常:', this.$refs.list.offsetHeight);
+      this.$nextTick(() => {
+        console.log('nextTick:', this.$refs.list.offsetHeight);
+      });
     }
   }
 });
