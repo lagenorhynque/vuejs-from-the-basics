@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue.js App</title>
+    <link href="main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <p>A half of  {{ width }} is {{ halfWidth }}</p>
+
+      <p>X: {{ halfPoint.x }}</p>
+      <p>Y: {{ halfPoint.y }}</p>
+
+      <input v-model.number="width"> {{ width }}
+      <input v-model.number="halfWidth"> {{ halfWidth }}
+
+      <ol>
+        <li>{{ computedData }}</li>
+        <li>{{ computedData }}</li>
+      </ol>
+      <ol>
+        <li>{{ methodsData() }}</li>
+        <li>{{ methodsData() }}</li>
+      </ol>
+
+      Filter not more than <input v-model.number="budget"> yen
+      <button @click="order = !order">Switch</button>
+      Show <input v-model.number="limit"> items
+      <p>Showing {{ limited.length }} in {{ matched.length }} items</p>
+      <ul>
+        <li v-for="item in limited" :key="item.id">
+          {{ item.name }} {{ item.price }} yen
+        </li>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
