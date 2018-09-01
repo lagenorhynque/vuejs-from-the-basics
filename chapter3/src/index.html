@@ -7,20 +7,41 @@
   </head>
   <body>
     <div id="app">
-      <button @click="handleClick">Click</button>
-      <input :value="message" @input="handleInput">
-      <div @click="handler('div1')">
-        div1
-        <a href="#top" @click.stop="handler('anker')">anker</a>
-        <a href="#top" @click.prevent="handler('anker')">anker</a>
-      </div>
-      <div @click.capture="handler('div1')">
-        div1
-        <div @click="handler('div2')">
-          div2
-          <div @click="handler('div3')">div3</div>
-        </div>
-      </div>
+      <input v-model="message">
+      <p>{{ message }}</p>
+
+      <textarea v-model="message"></textarea>
+      <pre>{{ message }}</pre>
+
+      <label>
+        <input type="checkbox" v-model="checkboxVal"> {{ checkboxVal }}
+      </label>
+
+      <label><input type="radio" value="a" v-model="radioVal"> A</label>
+      <label><input type="radio" value="b" v-model="radioVal"> B</label>
+      <label><input type="radio" value="c" v-model="radioVal"> C</label>
+      <p>{{ radioVal }}</p>
+
+      <select v-model="selectSingleVal">
+        <option disabled="disabled">Select</option>
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+      </select>
+
+      <select v-model="selectMultipleVal" multiple>
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+      </select>
+      <p>{{ selectMultipleVal }}</p>
+
+      <input type="file" @change="handleChange">
+      <div v-if="preview"><img :src="preview"></div>
+
+      <input type="range" v-model.number="rangeVal"> {{ rangeVal }}
+
+      <input type="text" v-model.number="price"> {{ price }}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
