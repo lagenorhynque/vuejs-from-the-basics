@@ -6,11 +6,15 @@
     <link href="main.css" rel="stylesheet">
   </head>
   <body>
-    <div id="app">
-      <p ref="hello">Hello</p>
-      <button v-on:click="handleClick">Count up</button>
-      <button v-on:click="show = !show">display on/off</button>
-      <span ref="count" v-if="show">0</span>
+    <div id="app" v-cloak>
+      <a :href="url" v-pre>
+        Hello {{ message }}
+      </a>
+      <a :href="url" v-once>
+        Hello {{ message }}
+      </a>
+      <span v-text="message2"></span>
+      <span v-html="message3"></span>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
