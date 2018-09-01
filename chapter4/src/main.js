@@ -1,20 +1,21 @@
 const app = new Vue({
   el: '#app',
   data: {
-    list: [],
-    current: '',
-    topics: [
-      { value: 'vue', name: 'Vue.js' },
-      { value: 'jQuery', name: 'jQuery' }
-    ]
+    price: 19800,
+    message: 'Hello Vue.js!'
   },
-  watch: {
-    current(val) {
-      axios.get('https://api.github.com/search/repositories', {
-        params: { q: 'topic:' + val }
-      }).then(response => {
-        this.list = response.data.items;
-      });
+  filters: {
+    localeNum(val) {
+      return val.toLocaleString();
+    },
+    filter(message, foo, num) {
+      console.log(message, foo, num);
+    },
+    round(val) {
+      return Math.round(val * 100) / 100;
+    },
+    radian(val) {
+      return val * Math.PI / 180;
     }
   }
 });

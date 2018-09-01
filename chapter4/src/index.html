@@ -7,12 +7,11 @@
   </head>
   <body>
     <div id="app">
-      <select v-model="current">
-        <option v-for="topic in topics" :value="topic.value">
-          {{ topic.name }}
-        </option>
-      </select>
-      <div v-for="item in list">{{ item.full_name }}</div>
+      {{ price | localeNum }}円
+
+      {{ message | filter('bar', 100) }}
+
+      180° is {{ 180 | radian | round }} radian
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
