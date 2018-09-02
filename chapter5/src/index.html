@@ -7,12 +7,19 @@
   </head>
   <body>
     <div id="app">
-      <my-global-component></my-global-component>
+      <comp-child val="This is Child A"></comp-child>
+      <comp-child val="This is Child B"></comp-child>
 
-      <my-local-component></my-local-component>
+      <comp-child :val="message"></comp-child>
 
-      <my-component></my-component>
-      <my-component></my-component>
+      <comp-item v-for="item in list"
+                 :key="item.id"
+                 v-bind="item"
+                 @attack="handleAttack"></comp-item>
+
+      <comp-button @childs-event="parentsMethod"></comp-button>
+
+      <component-b></component-b>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
