@@ -1,16 +1,16 @@
+Vue.component('my-circle', {
+  template: '<circle cx="80" cy="75" r="50" :fill="fill" />',
+  props: { fill: String }
+});
+
 const app = new Vue({
   el: '#app',
   data: {
-    order: false,
-    list: [
-      { id: 1, name: 'apple', price: 100 },
-      { id: 2, name: 'banana', price: 200 },
-      { id: 3, name: 'strawberry', price: 300 }
-    ]
+    toggle: false
   },
   computed: {
-    sortedList() {
-      return _.orderBy(this.list, 'price', this.order ? 'desc' : 'asc');
+    fill() {
+      return this.toggle ? 'lightpink' : 'skyblue';
     }
   }
 });
