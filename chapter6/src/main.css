@@ -1,7 +1,25 @@
 .v-enter-active, .v-leave-active {
+  transition: opacity 1s, transform 1s;
+}
+
+.v-enter {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.demo-enter-active, .demo-leave-active {
   transition: opacity 1s;
 }
 
-.v-enter, .v-leave-to {
+.demo-leave-active {
+  position: absolute;
+}
+
+.demo-enter, .demo-leave-to {
   opacity: 0;
 }
