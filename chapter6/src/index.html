@@ -7,25 +7,12 @@
   </head>
   <body>
     <div id="app">
-      <button @click="show = !show">Switch</button>
-      <transition appear>
-        <div v-show="show">transitioning element</div>
-      </transition>
-
-      <transition name="demo">
-        <div v-if="show" key="a">TRUE</div>
-        <div v-else key="b">FALSE</div>
-      </transition>
-
-      <transition name="demo" mode="out-in">
-        <div v-if="show" key="a">TRUE</div>
-        <div v-else key="b">FALSE</div>
-      </transition>
-
-      <button @click="count++">Count up</button>
-      <transition name="demo">
-        <div :key="count">{{ count }}</div>
-      </transition>
+      <button @click="order = !order">Toggle</button>
+      <transition-group tag="ul" class="list">
+        <li v-for="item in sortedList" :key="item.id">
+          {{ item.name }} {{ item.price }} yen
+        </li>
+      </transition-group>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
