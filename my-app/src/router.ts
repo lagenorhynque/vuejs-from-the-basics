@@ -8,8 +8,8 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/', component: Home },
-    { path: '/product', component: Product },
+    { name: 'home', path: '/', component: Home },
+    { name: 'product', path: '/product', component: Product },
   ],
 });
 export default router;
