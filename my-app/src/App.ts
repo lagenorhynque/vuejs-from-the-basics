@@ -1,13 +1,14 @@
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import EditForm from '@/components/EditForm.vue';
 
 export default Vue.extend({
   name: 'app',
   components: {
-    HelloWorld,
+    EditForm,
   },
-  created() {
-    console.log(this.$store.state.count);
-    this.$store.commit('increment');
+  computed: {
+    message(): string {
+      return this.$store.getters.message;
+    },
   },
 });

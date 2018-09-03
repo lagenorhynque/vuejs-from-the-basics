@@ -4,16 +4,26 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 interface State {
-  count: number;
+  message: string;
 }
 
 const store = new Vuex.Store({
   state: {
-    count: 0,
+    message: 'initial message',
   } as State,
+  getters: {
+    message(state) {
+      return state.message;
+    },
+  },
   mutations: {
-    increment(state) {
-      state.count++;
+    setMessage(state, payload: { message: string }) {
+      state.message = payload.message;
+    },
+  },
+  actions: {
+    doUpdate({ commit }, message: string) {
+      commit('setMessage', { message });
     },
   },
 });
