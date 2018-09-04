@@ -1,7 +1,7 @@
 <div id="app">
   <nav>
-    <router-link to="/" exact>Home</router-link>
-    <router-link to="/product">Product Info</router-link>
+    <router-link :to="{ name: 'home' }" exact>Home</router-link>
+    <router-link :to="{ name: 'product-list' }" exact>Product List</router-link>
   </nav>
   <router-view />
 
