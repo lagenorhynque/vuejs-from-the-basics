@@ -1,9 +1,9 @@
-<div class="product" v-if="item" key="product">
-  <h1>Product Info</h1>
-  <dl class="product-table">
-    <dt>product name</dt><dd>{{ item.name }}</dd>
-    <dt>price</dt><dd>{{ item.price }}</dd>
-    <dt>description</dt><dd>{{ item.content }}</dd>
-  </dl>
+<div class="product" v-if="detail" key="product">
+  <h1>{{ detail.name }}</h1>
+  <nav class="nav">
+    <router-link :to="{ name: 'product-home' }" exact>Product Detail</router-link>
+    <router-link :to="{ name: 'product-review' }" exact>Review</router-link>
+  </nav>
+  <router-view />
 </div>
 <div v-else key="loadin">Loading product info...</div>

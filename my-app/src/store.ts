@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import product from '@/store/product.ts';
 
 Vue.use(Vuex);
 
@@ -25,6 +26,9 @@ const store = new Vuex.Store({
     doUpdate({ commit }, message: string) {
       commit('setMessage', { message });
     },
+  },
+  modules: {
+    product,
   },
 });
 export default store;

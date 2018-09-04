@@ -1,28 +1,20 @@
 import Vue from 'vue';
+import { mapGetters } from 'vuex';
 import products from '@/api/products.ts';
 import { Product } from '@/api/products.ts';
 
-interface Data {
-  item: Product | null;
-}
-
 export default Vue.extend({
   props: { id: Number },
-  data() {
-    return {
-      item: null,
-    } as Data;
-  },
+  computed: mapGetters('product', ['detail']),
   watch: {
     id: {
       handler() {
-        products.asyncFind(this.id, item => {
-          if (item) {
-            this.item = item;
-          }
-        });
+        this.$store.dispatch('product/load', this.id);
       },
       immediate: true,
     },
+  },
+  beforeDestroy() {
+    this.$store.dispatch('product/destroy');
   },
 });
