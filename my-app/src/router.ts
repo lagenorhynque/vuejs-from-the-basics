@@ -9,7 +9,7 @@ import ProductReviewDetail from '@/views/Product/ReviewDetail.vue';
 
 Vue.use(VueRouter);
 
-const router = new VueRouter({
+export default new VueRouter({
   mode: 'history',
   routes: [
     { name: 'home', path: '/', component: Home },
@@ -38,4 +38,3 @@ const router = new VueRouter({
     },
   ],
 });
-export default router;

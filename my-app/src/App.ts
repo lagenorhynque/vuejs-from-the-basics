@@ -1,14 +1,13 @@
-import Vue from 'vue';
 import EditForm from '@/components/EditForm.vue';
+import { Vue, Component } from 'vue-property-decorator';
 
-export default Vue.extend({
-  name: 'app',
+@Component({
   components: {
     EditForm,
   },
-  computed: {
-    message(): string {
-      return this.$store.getters.message;
-    },
-  },
-});
+})
+export default class App extends Vue {
+  get message(): string {
+    return this.$store.getters.message;
+  }
+}

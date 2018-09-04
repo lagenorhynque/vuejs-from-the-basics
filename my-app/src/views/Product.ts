@@ -1,20 +1,20 @@
-import Vue from 'vue';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
 import products from '@/api/products.ts';
-import { Product } from '@/api/products.ts';
 
-export default Vue.extend({
-  props: { id: Number },
+@Component({
   computed: mapGetters('product', ['detail']),
-  watch: {
-    id: {
-      handler() {
-        this.$store.dispatch('product/load', this.id);
-      },
-      immediate: true,
-    },
-  },
-  beforeDestroy() {
+})
+export default class Product extends Vue {
+  @Prop(Number)
+  public id!: number;
+
+  @Watch('id', { immediate: true })
+  public onIdChange() {
+    this.$store.dispatch('product/load', this.id);
+  }
+
+  public beforeDestroy() {
     this.$store.dispatch('product/destroy');
-  },
-});
+  }
+}

@@ -1,8 +1,9 @@
-import Vue from 'vue';
+import { Vue, Component } from 'vue-property-decorator';
 import products from '@/api/products.ts';
 
-export default Vue.extend({
-  computed: {
-    list: () => products.fetch(),
-  },
-});
+@Component
+export default class ProductList extends Vue {
+  get list() {
+    return products.fetch();
+  }
+}

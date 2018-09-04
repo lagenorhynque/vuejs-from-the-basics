@@ -1,38 +1,44 @@
-import Vuex from 'vuex';
-import { Commit } from 'vuex';
-import products from '@/api/products.ts';
-import { Product } from '@/api/products.ts';
+import Vuex, { ActionContext } from 'vuex';
+import products, { Product } from '@/api/products.ts';
 
 interface State {
   detail: Product | {};
 }
 
+const state: State = {
+  detail: {},
+};
+
+const getters = {
+  detail: (st: State) => st.detail,
+};
+
+const mutations = {
+  set(st: State, { detail }: { detail: Product }) {
+    st.detail = detail;
+  },
+  clear(st: State) {
+    st.detail = {};
+  },
+};
+
+const actions = {
+  load({ commit }: ActionContext<State, any>, id: number) {
+    products.asyncFind(id, detail => {
+      if (detail) {
+        commit('set', { detail });
+      }
+    });
+  },
+  destroy({ commit }: ActionContext<State, any>) {
+    commit('clear');
+  },
+};
+
 export default {
   namespaced: true,
-  state: {
-    detail: {},
-  } as State,
-  getters: {
-    detail: (state: State) => state.detail,
-  },
-  mutations: {
-    set(state: State, { detail }: { detail: Product }) {
-      state.detail = detail;
-    },
-    clear(state: State) {
-      state.detail = {};
-    },
-  },
-  actions: {
-    load({ commit }: { commit: Commit }, id: number) {
-      products.asyncFind(id, detail => {
-        if (detail) {
-          commit('set', { detail });
-        }
-      });
-    },
-    destroy({ commit }: { commit: Commit }) {
-      commit('clear');
-    },
-  },
+  state,
+  getters,
+  mutations,
+  actions,
 };
